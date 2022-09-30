@@ -1,0 +1,43 @@
+create database employee_payroll_service_database;
+use employee_payroll_service_database;
+show databases;
+create table employee_payroll(
+id int not null auto_increment, 
+name varchar(100) not null, 
+salary double, 
+startDate date not null, 
+primary key (id)
+);
+drop table employee_payroll;
+INSERT INTO employee_payroll(name, salary, startDate)
+VALUES('Amit',25000,'2022-01-10'),
+('Neha',30000,'2022-02-12'),
+('Raj',35000,'2022-03-15');
+select * from employee_payroll;
+select Salary from employee_payroll where name ='Neha';
+select * from employee_payroll where StartDate between cast('2022-01-01' as Date ) AND DATE(NOW());
+alter table employee_payroll add gender char(1) after salary;
+update employee_payroll set gender = 'M' where name = 'Amit';
+update employee_payroll set gender = 'F' where name = 'Neha';
+update employee_payroll set gender = 'M' where name = 'Raj';
+select sum(Salary) from employee_payroll where Gender = 'F' group by Gender;
+select sum(Salary) from employee_payroll where Gender = 'M' group by Gender;
+select avg(Salary) from employee_payroll where Gender = 'F' group by Gender;
+select avg(Salary) from employee_payroll where Gender = 'M' group by Gender;
+select min(Salary) from employee_payroll where Gender = 'F' group by Gender;
+select min(Salary) from employee_payroll where Gender = 'M' group by Gender;
+select max(Salary) from employee_payroll where Gender = 'F' group by Gender;
+select max(Salary) from employee_payroll where Gender = 'M' group by Gender;
+select count(Salary) from employee_payroll where Gender = 'F' group by Gender;
+select count(Salary) from employee_payroll where Gender = 'M' group by Gender;
+select * from employee_payroll;
+ALTER TABLE employee_payroll
+ADD phoneNumber long;
+update employee_payroll set phoneNumber = '7485857584' where id = 1;
+update employee_payroll set phoneNumber = '6487852344' where id = 2;
+update employee_payroll set phoneNumber = '8485454584' where id = 3;
+ALTER TABLE employee_payroll
+ADD department varchar(30);
+update employee_payroll set department = 'HR' where id = 1;
+update employee_payroll set department = 'Account' where id = 2;
+update employee_payroll set department = 'Production' where id = 3;
