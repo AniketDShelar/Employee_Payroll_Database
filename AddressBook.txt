@@ -1,0 +1,36 @@
+drop database address_book_service;
+CREATE DATABASE address_book_service;
+drop database address_book_service;
+create database address_book_service;
+use address_book_service;
+create table AddressBook (
+       firstName varchar(50) not null,
+       lastName varchar(50) not null,
+       address varchar(100) not null,
+       city varchar(50) not null,
+       state varchar(50) not null,
+       zip int not null,
+       phoneNumber double not null,
+       email varchar(100) not null
+   );
+drop table AddressBook;
+insert into AddressBook (firstname, lastname, address,city, state, zip,phoneNumber,email)
+values('Ashish', 'Sahu','Bolangir','BBSR','Odisha', 768041, 7339731548,'ashish@gmail.com'),
+('Shivam ','Shakya','Ramapura','Ethawa','Bihar', 561210, 999999999,'shivam@gmail.com'),
+('Deepak','Yadav','Alambagh','Lucknow','Uttar Pradesh', 520102, 888888888,'deepak@gmail.com'),
+('Ajeeth','V','sirinagara','chennai','Tamilnadu', 3021402, 777777777,'ajith@gmail.com');
+select * from AddressBook;
+UPDATE AddressBook SET  FirstName ='Ajeeth' WHERE LastName ='Yadav';
+delete from addressBook where FirstName ='Shivam';
+select * from AddressBook where City = 'Lucknow';
+select count(City) from AddressBook;
+select * from AddressBook order by FirstName;
+select * from AddressBook where city = 'Lucknow' or State='Uttar Pradesh';
+select count(firstname) from AddressBook where city = 'Lucknow';
+ALTER TABLE AddressBook
+ADD contacttype varchar(25);
+insert into AddressBook(firstname,lastname,address,city,state,zip,phoneNumber,email,contacttype)
+values ('Abhi','V','coorg','Chikkamagalur','Karnatak',50102,9874561023,'abhi@gmail.com','Family'),
+('Vijay','Mishra','VaidyaPatti','Pratpgarh','Uttar Pradesh',851026,9874563201,'Vijay@gmail.com','professional');
+select * from AddressBook;
+select count(firstname) from AddressBook where contactType='family';
